@@ -2,48 +2,51 @@ var app = angular.module('AngularUIApp.controllers.Main',
     ['services.resources']);
 
 app.controller('MainController', function($scope, $log, $location, loginService){
-    _LTracker.push('Hello World');
+    //_LTracker.push('Hello World');
   //car.start();
 
+    // Initialized the user object
+    $scope.user = {
+        username: "",
+        password: ""
+    };
 
 
     //loginService.save({}, {"email":"demo.sipree@gmail.com.mmh","password":"ABCD1234a"},
-    var res = loginService.save({}, {email:"demo.sipree@gmail.com",password:"ABCD1234"},
 
-        //success
-        function( value ){
-            //alert('success');
-            console.log("code " + res.code);
-            console.log("success " + value.success);
-            console.log('value ' + value.code);
-            $scope.success = value.success;
-            $scope.code = value.code;
-        },
-        function( reason ){
-            // alert('failure ' + error);
+    //console.log(res);
 
-            reason.error();
-            console.log('error ' + reason );
-        }
-    );
+    // Sign In auth function
+    $scope.signin = function () {
 
-    console.log(res);
-    console.log("test");
-    //console.log("code " + res.code());
-    //console.log("success " + res.success());
+        console.log('starting');
+        //var credentials = {
+        //    username: $scope.username,
+        //    password: $scope.password
+        //};
 
-  //loginService.login().$promise.then(
-  //    //success
-  //    function( value ){
-  //        //alert('success');
-  //        console.log('value ' + value);
-  //    },
-  //    function( reason ){
-  //       // alert('failure ' + error);
-  //        reason.error();
-  //        console.log('error ' + reason );
-  //    }
-  //)
+        var res = loginService.save({},
+            {email:$scope.user.username,password:$scope.user.password},
+            //success
+            function( value ){
+                //alert('success');
+
+                console.log("success " + value.success);
+                console.log('code ' + value.code);
+                $scope.success = value.success;
+                $scope.code = value.code;
+                $location.path('/about');
+            },
+            function( reason ){
+                console.log('error ' + reason );
+                //$location.path('/authFail');
+            }
+        );
+
+        console.log(res);
+
+    }
+
 
 
 });
