@@ -1,0 +1,43 @@
+<div class="scrollable">
+    <div class="scrollable-content section">
+        <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">Sign In</div>
+                    <div style="float:right; font-size: 80%; position: relative; top:-10px"></div>
+                </div>
+
+                <div style="padding-top:30px" class="panel-body">
+
+                    <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+
+                    <form action="" id="" ng-submit="signin()" class="form-horizontal">
+
+                        <div bs-panel title="">
+                            <div style="margin-bottom: 25px" class="input-group">
+
+                                <input bs-form-control type="text" ng-model="user.username" label=""
+                                       class="col-xs-10 col-sm-11 col-lg-12" placeholder="Username"/>
+                            </div>
+                            <div style="margin-bottom: 25px" class="input-group">
+                                <input bs-form-control type="password" ng-model="user.password" label=""
+                                       class="col-xs-10 col-sm-11 col-lg-12" placeholder="Password"/>
+                            </div>
+                            <div style="margin-bottom: 25px" class="input-group">
+
+                                <button ng-disabled="user.username==undefined||user.username=='' || user.password=='' || user.password==undefined"
+                                        type="submit" id="btnSignIn" class="btn btn-primary">
+                                    Sign In
+                                </button>
+                            </div>
+                        </div>
+
+                    </form>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
