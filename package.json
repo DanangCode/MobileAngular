@@ -25,8 +25,7 @@
     "gulp-rename": "^1.2.0"
   },
   "scripts": {
-    "start": "node app",
-    "postinstall": "gulp"
+    "start": "node node_modules/.bin/gulp default"
   }
 
 }
