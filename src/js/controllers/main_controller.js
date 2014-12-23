@@ -53,7 +53,7 @@ app.controller('MainController', function($scope, $location, loginService, Sessi
         console.log('config: ' + JSON.stringify(response.config));
     }
 
-    
+
 
 });
 
