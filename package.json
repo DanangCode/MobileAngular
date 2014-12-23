@@ -25,7 +25,9 @@
     "gulp-rename": "^1.2.0"
   },
   "scripts": {
-    "start": "node node_modules/.bin/gulp default"
+    "start": "node src/js/app.js"
+  },
+  "dependencies": {
+    "gulp": "^3.8.10"
   }
-
 }
