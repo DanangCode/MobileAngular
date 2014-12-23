@@ -3,7 +3,8 @@ angular.module('AngularUIApp', [
     'mobile-angular-ui',
     'AngularUIApp.controllers.Main',
     'ngResource',
-    'services.resources'
+    'services.resources',
+    'services.session'
 ])
 
     .config(function ($routeProvider) {
@@ -11,7 +12,9 @@ angular.module('AngularUIApp', [
         $routeProvider.when('/', {
             templateUrl: "signIn.html"
         });
-
+        $routeProvider.when('/signIn', {
+            templateUrl: "signIn.html"
+        });
         $routeProvider.when('/about', {
             templateUrl: 'about.html'
         });
@@ -36,6 +39,19 @@ angular.module('AngularUIApp', [
         });
         $routeProvider.when('/paymentTypes', {
             templateUrl: 'paymentTypes.html'
+        });
+
+    }).run(function ($rootScope, SessionService, $location) {
+
+        $rootScope.$on("$locationChangeStart", function (event, next, current) {
+
+                    if (!SessionService.getUserAuthenticated()) {
+                        //alert("You need to be authenticated to see this page!");
+                        //event.preventDefault();
+                        $location.path('/signIn');
+                    }
+
+
         });
 
     });

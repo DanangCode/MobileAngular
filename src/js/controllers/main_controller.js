@@ -1,9 +1,8 @@
 var app = angular.module('AngularUIApp.controllers.Main',
-    ['services.resources']);
+    ['services.resources', 'services.session']);
 
-app.controller('MainController', function($scope, $log, $location, loginService){
-    //_LTracker.push('Hello World');
-  //car.start();
+
+app.controller('MainController', function($scope, $location, loginService, SessionService){
 
     // Initialized the user object
     $scope.user = {
@@ -12,42 +11,49 @@ app.controller('MainController', function($scope, $log, $location, loginService)
     };
 
 
-    //loginService.save({}, {"email":"demo.sipree@gmail.com.mmh","password":"ABCD1234a"},
-
-    //console.log(res);
-
     // Sign In auth function
     $scope.signin = function () {
 
         console.log('starting');
-        //var credentials = {
-        //    username: $scope.username,
-        //    password: $scope.password
-        //};
 
-        var res = loginService.save({},
-            {email:$scope.user.username,password:$scope.user.password},
+        $location.path('/');
+        loginService.save({},
+            {email:$scope.user.username,
+                password:$scope.user.password},
             //success
             function( value ){
                 //alert('success');
-
-                console.log("success " + value.success);
+                //console.log("success " + value.success);
                 console.log('code ' + value.code);
                 $scope.success = value.success;
                 $scope.code = value.code;
-                $location.path('/about');
+
+                if (value.success===true) {
+                    console.log("Success");
+                    $scope.signInMessage = "";
+                    SessionService.setUserAuthenticated(true);
+                        $location.path('/about');
+                } else {
+                    console.log("AuthError");
+                    $scope.signInMessage = "This user and password combination is unknown";
+                    $location.path('/signIn');
+                }
+
             },
-            function( reason ){
-                console.log('error ' + reason );
-                //$location.path('/authFail');
-            }
+            errorCallback2
         );
 
-        console.log(res);
+    };
 
+    var errorCallback2 = function(response) {
+        console.log('failed http req!');
+        console.log('data: ' + response.data);
+        console.log('status: ' + response.status);
+        console.log('headers: ' + JSON.stringify(response.headers()));
+        console.log('config: ' + JSON.stringify(response.config));
     }
 
-
+    
 
 });
 
