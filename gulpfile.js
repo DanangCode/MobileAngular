@@ -285,3 +285,14 @@ var runSeq = require('run-sequence')
 gulp.task('heroku:production', function(){
     runSeq('clean', 'build')
 })
+
+
+var deploy = require('gulp-gh-pages');
+
+/**
+ * Push build to gh-pages
+ */
+gulp.task('deploy', function () {
+    return gulp.src("./dist/**/*")
+        .pipe(deploy())
+});
