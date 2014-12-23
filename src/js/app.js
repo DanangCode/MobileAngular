@@ -10,35 +10,29 @@ angular.module('AngularUIApp', [
     .config(function ($routeProvider) {
         //$routeProvider.when('/', {templateUrl: 'home.html'});
         $routeProvider.when('/', {
-            templateUrl: "signIn.html"
+            templateUrl: "about.html",
+            reloadOnSearch: false
+        });
+
+        $routeProvider.when('/about', {
+            templateUrl: 'about.html',
+            reloadOnSearch: false
         });
         $routeProvider.when('/signIn', {
-            templateUrl: "signIn.html"
+            templateUrl: "signIn.html",
+            reloadOnSearch: false
         });
-        $routeProvider.when('/about', {
-            templateUrl: 'about.html'
-        });
-
         $routeProvider.when('/authFail', {
-            templateUrl: 'authFail.html'
+            templateUrl: 'authFail.html',
+            reloadOnSearch: false
         });
 
-        $routeProvider.when('/userHome', {
-            templateUrl: 'userHome.html'
-            //resolve: {
-            //    auth: ["$q", "authenticationSvc", function ($q, authenticationSvc) {
-            //        var userInfo = authenticationSvc.getUserInfo();
-            //
-            //        if (userInfo) {
-            //            return $q.when(userInfo);
-            //        } else {
-            //            return $q.reject({authenticated: false});
-            //        }
-            //    }]
-            //}
-        });
+        //$routeProvider.when('/userHome', {
+        //    templateUrl: 'userHome.html'
+        //});
         $routeProvider.when('/paymentTypes', {
-            templateUrl: 'paymentTypes.html'
+            templateUrl: 'paymentTypes.html',
+            reloadOnSearch: false
         });
 
     }).run(function ($rootScope, SessionService, $location) {
