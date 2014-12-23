@@ -2,6 +2,12 @@
   "name": "weather-app",
   "version": "0.0.0",
   "devDependencies": {
+
+  },
+  "scripts": {
+    "start": "node src/js/app.js"
+  },
+  "dependencies": {
     "gulp": "^3.8.1",
     "gulp-connect": "^2.0.5",
     "gulp-ignore": "^1.2.0",
@@ -23,11 +29,5 @@
     "gulp-angular-filesort": "^1.0.1",
     "streamqueue": "^0.1.1",
     "gulp-rename": "^1.2.0"
-  },
-  "scripts": {
-    "start": "node src/js/app.js"
-  },
-  "dependencies": {
-    "gulp": "^3.8.10"
   }
 }
