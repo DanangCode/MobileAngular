@@ -26,14 +26,14 @@ var config = {
     port: '8000'
   },
 
-  //weinre: {
-  //  httpPort:     8001,
-  //  boundHost:    'localhost',
-  //  verbose:      false,
-  //  debug:        false,
-  //  readTimeout:  5,
-  //  deathTimeout: 15
-  //}
+  weinre: {
+    httpPort:     8001,
+    boundHost:    'localhost',
+    verbose:      false,
+    debug:        false,
+    readTimeout:  5,
+    deathTimeout: 15
+  }
 };
 
 
