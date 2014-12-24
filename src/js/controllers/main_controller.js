@@ -2,7 +2,7 @@ var app = angular.module('AngularUIApp.controllers.Main',
     ['services.resources', 'services.session']);
 
 
-app.controller('MainController', function($scope, $location, loginService, SessionService){
+app.controller('MainController', function($scope, $location, loginService, SessionService, $log){
 
     // Initialized the user object
     $scope.user = {
@@ -16,23 +16,23 @@ app.controller('MainController', function($scope, $location, loginService, Sessi
     // Sign In auth function
     $scope.signin = function () {
 
-        console.log('starting');
+        $log.info('starting');
         loginService.login({},
             {email:$scope.user.username, password:$scope.user.password},
             //success
             function( value ){
 
-                console.log('code ' + value.code);
+                $log.info('code ' + value.code);
                 $scope.success = value.success;
                 $scope.code = value.code;
 
                 if (value.success===true) {
-                    console.log("Success");
+                    $log.info("Success");
                     $scope.signInMessage = "";
                     SessionService.setUserAuthenticated(true);
                         $location.path('/about');
                 } else {
-                    console.log("AuthError: " + value.code);
+                    $log.info("AuthError: " + value.code);
                     $scope.signInMessage = "This user and password combination is unknown";
                     //$location.path('/signIn');
                 }
@@ -43,11 +43,11 @@ app.controller('MainController', function($scope, $location, loginService, Sessi
     };
 
     var errorCallback = function(response) {
-        console.log('failed http req!');
-        console.log('data: ' + response.data);
-        console.log('status: ' + response.status);
-        console.log('headers: ' + JSON.stringify(response.headers()));
-        console.log('config: ' + JSON.stringify(response.config));
+        $log.info('failed http req!');
+        $log.info('data: ' + response.data);
+        $log.info('status: ' + response.status);
+        $log.info('headers: ' + JSON.stringify(response.headers()));
+        $log.info('config: ' + JSON.stringify(response.config));
     }
 
 

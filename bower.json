@@ -7,6 +7,10 @@
     "angular-route": "1.x",
     "mobile-angular-ui": "1.2.x",
     "font-awesome": "4.x",
-    "bootstrap": "3.x"
+    "bootstrap": "3.x",
+    "angular-loggly-logger": "*"
+  },
+  "resolutions": {
+    "angular": "1.x"
   }
 }

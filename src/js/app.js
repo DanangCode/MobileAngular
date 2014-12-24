@@ -4,11 +4,13 @@ angular.module('AngularUIApp', [
     'AngularUIApp.controllers.Main',
     'ngResource',
     'services.resources',
-    'services.session'
+    'services.session',
+    'ngLoggly'
 ])
 
-    .config(function ($routeProvider) {
-        //$routeProvider.when('/', {templateUrl: 'home.html'});
+    .config(function ($routeProvider, LogglyLoggerProvider) {
+        LogglyLoggerProvider.inputToken('216a3ed7-8fe0-4046-93b4-097fe714b9ef');
+
         $routeProvider.when('/', {
             templateUrl: "about.html",
             reloadOnSearch: false
@@ -32,15 +34,15 @@ angular.module('AngularUIApp', [
             reloadOnSearch: false
         });
 
-    }).run(function ($rootScope, SessionService, $location) {
+    }).run(function ($rootScope, SessionService, $location, $log) {
 
         $rootScope.$on("$locationChangeStart", function (event, next, current) {
 
-                    if (!SessionService.getUserAuthenticated()) {
-                        //alert("You need to be authenticated to see this page!");
-                        //event.preventDefault();
-                        $location.path('/signIn');
-                    }
+            if (!SessionService.getUserAuthenticated()) {
+                $log.info("You need to be authenticated to see this page!");
+                //event.preventDefault();
+                $location.path('/signIn');
+            }
 
 
         });
