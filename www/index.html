@@ -17,9 +17,17 @@
     <script src="cordova.js"></script>
     <script src="js/app.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-resource.js"></script>
+
+    <script type="text/javascript" src="/angular-loggly/loggly-jslogger/src/loggly.tracker.js"></script>
+    <script type="text/javascript" src="/loggerService.js"></script>
     <script>
-      var _LTracker = _LTracker || [];
-      _LTracker.push({'logglyKey': '216a3ed7-8fe0-4046-93b4-097fe714b9ef' });
+      <!--var _LTracker = _LTracker || [];-->
+      <!--_LTracker.push({'logglyKey': '216a3ed7-8fe0-4046-93b4-097fe714b9ef' });-->
+      <!--_LTracker.push('Hello World');-->
+
+      loggly.setApiKey('216a3ed7-8fe0-4046-93b4-097fe714b9ef');
+      loggly.log('Hello World');
+      loggly.log({ message: 'awesome stuff' });
     </script>
   </head>
   <body ng-app="AngularUIApp" ng-controller="MainController">

@@ -27,9 +27,6 @@ angular.module('AngularUIApp', [
             reloadOnSearch: false
         });
 
-        //$routeProvider.when('/userHome', {
-        //    templateUrl: 'userHome.html'
-        //});
         $routeProvider.when('/paymentTypes', {
             templateUrl: 'paymentTypes.html',
             reloadOnSearch: false

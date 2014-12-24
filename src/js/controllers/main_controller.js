@@ -11,6 +11,8 @@ app.controller('MainController', function($scope, $location, loginService, Sessi
     };
 
 
+
+
     // Sign In auth function
     $scope.signin = function () {
 
