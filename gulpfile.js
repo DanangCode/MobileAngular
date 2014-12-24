@@ -291,12 +291,12 @@ gulp.task('heroku:production', function () {
 })
 
 
-//var deploy = require('gulp-gh-pages');
-//
-///**
-// * Push build to gh-pages
-// */
-//gulp.task('deploy', function () {
-//    return gulp.src("./www/**/*")
-//        .pipe(deploy())
-//});
+var deploy = require('gulp-gh-pages');
+
+/**
+* Push build to gh-pages
+*/
+gulp.task('deploy', function () {
+    return gulp.src("./www/**/*")
+        .pipe(deploy())
+});
