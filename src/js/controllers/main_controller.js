@@ -9,9 +9,7 @@ app.controller('MainController', function($scope, $location, loginService, Sessi
         username: "",
         password: ""
     };
-
-
-
+    
 
     // Sign In auth function
     $scope.signin = function () {
